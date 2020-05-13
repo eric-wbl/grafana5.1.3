@@ -175,6 +175,12 @@ module.directive('grafanaPanel', function($rootScope, $document, $timeout) {
 
       function updatePanelCornerInfo() {
         var cornerMode = ctrl.getInfoMode();
+
+        if (ctrl.error === "Request Error") {
+          console.log("Request Error: " + ctrl.error);
+          cornerMode = '';
+        }
+
         cornerInfoElem[0].className = 'panel-info-corner panel-info-corner--' + cornerMode;
 
         if (cornerMode) {
